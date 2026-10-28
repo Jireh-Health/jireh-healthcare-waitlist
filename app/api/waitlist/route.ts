@@ -1,6 +1,6 @@
 import { NextRequest } from "next/server"
 import { validateHealthcareForm } from "@/lib/validations"
-import { supabaseClient } from "@/lib/supabase"
+import { getSupabaseClient } from "@/lib/supabase"
 import { resendClient } from "@/lib/resend"
 
 export async function POST(req: NextRequest): Promise<Response> {
@@ -14,7 +14,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   const { firstName, lastName, email, phone, healthcareProviderName, roleInFacility } =
     validation.data
 
-  const { error: dbError } = await supabaseClient.from("healthcare_waitlist").insert({
+  const { error: dbError } = await getSupabaseClient().from("healthcare_waitlist").insert({
     first_name: firstName,
     last_name: lastName,
     email,

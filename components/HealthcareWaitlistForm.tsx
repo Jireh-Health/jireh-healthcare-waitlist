@@ -54,6 +54,8 @@ export default function HealthcareWaitlistForm() {
           <JirehLogo />
         </div>
 
+        <img src="/icons/create-account.png" className="w-[70px] mx-auto" alt="" aria-hidden="true" />
+
         <div className="flex flex-col gap-1 text-center">
           <h1 className="text-xl font-semibold text-center">
             Partner with Jireh Health

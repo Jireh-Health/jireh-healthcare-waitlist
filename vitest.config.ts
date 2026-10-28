@@ -11,14 +11,12 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./vitest.setup.ts"],
     globals: true,
-    moduleNameMapper: {
-      "^next/navigation$": path.resolve(__dirname, "__mocks__/next-navigation.ts"),
-      "^next/image$": path.resolve(__dirname, "__mocks__/next-image.tsx"),
-    },
   },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "."),
+      "next/navigation": path.resolve(__dirname, "__mocks__/next-navigation.ts"),
+      "next/image": path.resolve(__dirname, "__mocks__/next-image.tsx"),
     },
   },
 });

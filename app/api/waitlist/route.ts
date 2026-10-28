@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server"
 import { validateHealthcareForm } from "@/lib/validations"
 import { getSupabaseClient } from "@/lib/supabase"
-import { resendClient } from "@/lib/resend"
+import { getResendClient } from "@/lib/resend"
 
 export async function POST(req: NextRequest): Promise<Response> {
   const body = await req.json()
@@ -29,7 +29,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     return Response.json({ error: "Failed to save your details. Please try again." }, { status: 500 })
   }
 
-  const { error: emailError } = await resendClient.emails.send({
+  const { error: emailError } = await getResendClient().emails.send({
     from: process.env.RESEND_FROM_EMAIL ?? "Jireh Health <onboarding@resend.dev>",
     to: process.env.NOTIFICATION_EMAIL!,
     subject: "New healthcare waitlist sign-up",

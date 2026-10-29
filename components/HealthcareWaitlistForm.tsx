@@ -19,7 +19,7 @@ export default function HealthcareWaitlistForm() {
   const {
     register,
     handleSubmit,
-    formState: { isValid, isSubmitting },
+    formState: { isValid, isSubmitting, errors },
   } = useForm<HealthcareWaitlistData>({
     resolver: zodResolver(healthcareWaitlistSchema),
     mode: "onChange",
@@ -129,6 +129,9 @@ export default function HealthcareWaitlistForm() {
                 {...register("phone")}
               />
             </div>
+            {errors.phone && (
+              <p className="text-sm text-destructive">{errors.phone.message}</p>
+            )}
           </div>
 
           {/* Row 4: Healthcare provider name */}

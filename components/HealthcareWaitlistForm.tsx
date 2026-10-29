@@ -19,7 +19,7 @@ export default function HealthcareWaitlistForm() {
   const {
     register,
     handleSubmit,
-    formState: { isValid, isSubmitting, errors },
+    formState: { isSubmitting, errors },
   } = useForm<HealthcareWaitlistData>({
     resolver: zodResolver(healthcareWaitlistSchema),
     mode: "onChange",
@@ -44,7 +44,7 @@ export default function HealthcareWaitlistForm() {
     }
   }
 
-  const isDisabled = !consent || !isValid || isSubmitting
+  const isDisabled = !consent || isSubmitting
 
   return (
     <div className="min-h-screen bg-muted flex items-center justify-center p-4">
